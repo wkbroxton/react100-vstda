@@ -88,10 +88,65 @@ export default class App extends Component {
               <h5 id="welcome-phrase">Welcome to Very Simple Todo App!</h5>
               <h5>Get started now by adding a new todo on the left.</h5>
             </div>
-            <div class="list-group ">
-              <a href="#" class="list-group-item list-group-item-action view">
+
+            <hr />
+
+            <ul className="list-group">
+              <li className="list-group-item">
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  aria-label="..."
+                />
+                First checkbox
+              </li>
+              <li className="list-group-item">
+                <input
+                  className="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  aria-label="..."
+                />
+                Second checkbox
+              </li>
+              <li className="list-group-item">
+                <input
+                  className="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  aria-label="..."
+                />
+                Third checkbox
+              </li>
+              <li className="list-group-item">
+                <input
+                  className="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  aria-label="..."
+                />
+                Fourth checkbox
+              </li>
+              <li className="list-group-item">
+                <input
+                  className="form-check-input me-1"
+                  type="checkbox"
+                  value=""
+                  aria-label="..."
+                />
+                Fifth checkbox
+              </li>
+            </ul>
+
+            <hr />
+            <div className="list-group ">
+              <a
+                href="#"
+                className="list-group-item list-group-item-action view"
+              >
+                <input
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -101,10 +156,10 @@ export default class App extends Component {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-primary"
+                className="list-group-item list-group-item-action list-group-item-primary"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -113,10 +168,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-secondary"
+                className="list-group-item list-group-item-action list-group-item-secondary"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -125,10 +180,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-success"
+                className="list-group-item list-group-item-action list-group-item-success"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -137,10 +192,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-danger"
+                className="list-group-item list-group-item-action list-group-item-danger"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -149,10 +204,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-warning"
+                className="list-group-item list-group-item-action list-group-item-warning"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -161,10 +216,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-info"
+                className="list-group-item list-group-item-action list-group-item-info"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -173,10 +228,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light"
+                className="list-group-item list-group-item-action list-group-item-light"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
@@ -185,10 +240,10 @@ export default class App extends Component {
               </a>
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-dark"
+                className="list-group-item list-group-item-action list-group-item-dark"
               >
                 <input
-                  class="form-check-input me-1"
+                  className="form-check-input me-1"
                   type="checkbox"
                   value=""
                   aria-label="..."
