@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import Todo from "./Todo";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newTodo: "",
-      priority: "0",
-      color: "",
-      editEnabled: false,
+      todo: {
+        newTodo: "",
+        priority: "0",
+        color: "",
+        editEnabled: false,
+      },
       allTodos: [],
       showTodos: false,
     };
@@ -16,14 +19,14 @@ export default class App extends Component {
   }
 
   onChange(e) {
-    console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
+    let todoClone = JSON.parse(JSON.stringify(this.state.todo));
+    todoClone[e.target.name] = e.target.value;
+    console.log(todoClone);
+    this.setState({ todo: todoClone });
   }
 
   handleClick() {
-    const newTodo = this.state.newTodo;
-    const priority = this.state.priority;
-    const editEnabled = this.state.editEnabled;
+    const priority = this.state.todo.priority;
 
     let color =
       priority == "1"
@@ -32,18 +35,18 @@ export default class App extends Component {
         ? "list-group-item-warning"
         : "list-group-item-danger";
 
-    const todo = {
-      newTodo: newTodo,
-      priority: priority,
-      color: color,
-      editEnabled: editEnabled,
-    };
-    let newArr = this.state.allTodos.concat(todo);
+    let todoClone = JSON.parse(JSON.stringify(this.state.todo));
+    todoClone["color"] = color;
+
+    let newArr = this.state.allTodos.concat(todoClone);
     this.setState({
       allTodos: newArr,
-      newTodo: "",
-      priority: 0,
-      color: "",
+      todo: {
+        newTodo: "",
+        priority: "0",
+        color: "",
+        editEnabled: false,
+      },
       showTodos: true,
     });
   }
@@ -68,14 +71,14 @@ export default class App extends Component {
               name="newTodo"
               className="create-todo-text"
               onChange={this.onChange}
-              value={this.state.newTodo}
+              value={this.state.todo.newTodo}
             ></textarea>
             <h5>How much of a priority is this?</h5>
             <select
               className="create-todo-priority"
               name="priority"
               onChange={this.onChange}
-              value={this.state.priority}
+              value={this.state.todo.priority}
             >
               <option selected disabled>
                 Select a Priority
@@ -91,167 +94,25 @@ export default class App extends Component {
             {this.state.showTodos ? (
               <div>
                 <h4>ToDo Items</h4>
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    First checkbox
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    Second checkbox
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    Third checkbox
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    Fourth checkbox
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    Fifth checkbox
-                  </li>
-                </ul>
-
                 <hr />
-                <div className="list-group ">
+                <ul className="list-group ">
                   <a
                     href="#"
                     className="list-group-item list-group-item-action view"
                   >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple default list group item
+                    <li>
+                      {this.state.allTodos.map((todo) => (
+                        <Todo
+                          className="form-check-input me-1"
+                          type="checkbox"
+                          value=""
+                          aria-label="..."
+                          description={todo.newTodo}
+                        />
+                      ))}
+                    </li>
                   </a>
-
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-primary"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple primary list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-secondary"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple secondary list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-success"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple success list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-danger"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple danger list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-warning"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple warning list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-info"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple info list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-light"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple light list group item
-                  </a>
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action list-group-item-dark"
-                  >
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value=""
-                      aria-label="..."
-                    />
-                    A simple dark list group item
-                  </a>
-                </div>
-                <p id="todo-list">{this.state.allTodos.newTodo}</p>
+                </ul>
               </div>
             ) : (
               <div id="welcome-phrase-div">
@@ -260,6 +121,32 @@ export default class App extends Component {
                 <h5>Get started now by adding a new todo on the left.</h5>
                 <hr />
               </div>
+            )}
+            {this.state.editEnabled ? (
+              <div>
+                <h4>ToDo Items</h4>
+                <hr />
+                <ul className="list-group ">
+                  <a
+                    href="#"
+                    className="list-group-item list-group-item-action view"
+                  >
+                    <li>
+                      {this.state.allTodos.map((todo) => (
+                        <Todo
+                          className="form-check-input me-1"
+                          type="checkbox"
+                          value=""
+                          aria-label="..."
+                          description={todo.newTodo}
+                        />
+                      ))}
+                    </li>
+                  </a>
+                </ul>
+              </div>
+            ) : (
+              <div id="welcome-phrase-div"></div>
             )}
           </div>
         </div>
