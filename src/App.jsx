@@ -1,3 +1,4 @@
+import { all } from "bluebird";
 import React, { Component } from "react";
 import Todo from "./Todo";
 import ViewTodo from "./ViewTodo";
@@ -11,12 +12,14 @@ export default class App extends Component {
         priority: "0",
         color: "",
         editEnabled: false,
+        strikeThrough: false,
       },
       allTodos: [],
       showTodos: false,
     };
     this.onChange = this.onChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
   }
 
@@ -27,11 +30,20 @@ export default class App extends Component {
     this.setState({ todo: todoClone });
   }
 
-  removeTodo(name, i) {
-    let todos = this.state.todos.slice();
-    todos.splice(i, 1);
+  handleCheck(e, i) {
+    let allTodosClone = [...this.state.allTodos];
+    allTodosClone[i]["strikeThrough"] == e.target.checked;
+    console.log(e.target.checked, i);
     this.setState({
-      todos,
+      allTodos: allTodosClone,
+    });
+  }
+
+  removeTodo(i) {
+    let allTodosClone = [...this.state.allTodos];
+    allTodosClone.splice(i, 1);
+    this.setState({
+      allTodos: allTodosClone,
     });
   }
 
@@ -60,6 +72,7 @@ export default class App extends Component {
         priority: "0",
         color: "",
         editEnabled: false,
+        strikeThrough: false,
       },
       showTodos: true,
     });
@@ -110,12 +123,19 @@ export default class App extends Component {
                 <h4>ToDo Items</h4>
                 <h4 id="todos-phrase">Let's Get Some Things Done!</h4>
                 <h4>
-                  To prioritize task by importance, press <button>Sort</button>.
+                  To prioritize task by importance, press{" "}
+                  <button id="sort">Sort</button>.
                 </h4>
                 <hr />
                 <ul className="list-group">
-                  {this.state.allTodos.map((todo) => (
-                    <Todo Todo={todo} />
+                  {this.state.allTodos.map((todo, i) => (
+                    <Todo
+                      Todo={todo}
+                      removeTodo={this.removeTodo}
+                      i={i}
+                      key={i}
+                      handleCheck={this.handleCheck}
+                    />
                   ))}
                 </ul>
               </div>

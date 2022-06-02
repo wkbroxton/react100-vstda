@@ -8,12 +8,23 @@ export default (props) => (
         type="checkbox"
         value=""
         aria-label="..."
+        onChange={(e) => props.handleCheck(e, props.i)}
       />
       <span>{props.Todo.newTodo}</span>
-      <a className="edit-todo edit-button">
+      <a
+        onClick={() => {
+          props.viewTodo(props.i);
+        }}
+        className="edit-todo edit-button"
+      >
         <img src="https://i.imgur.com/8Ox11Wz.png" />
       </a>
-      <a className="delete-todo delete-button">
+      <a
+        onClick={() => {
+          props.removeTodo(props.i);
+        }}
+        className="delete-todo delete-button"
+      >
         <img src="https://i.imgur.com/XR8a1XZ.png" />
       </a>
     </div>
