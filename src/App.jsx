@@ -32,7 +32,8 @@ export default class App extends Component {
 
   handleCheck(e, i) {
     let allTodosClone = [...this.state.allTodos];
-    allTodosClone[i]["strikeThrough"] == e.target.checked;
+    allTodosClone[i]["strikeThrough"] = e.target.checked;
+    console.log(allTodosClone);
     console.log(e.target.checked, i);
     this.setState({
       allTodos: allTodosClone,
@@ -114,7 +115,9 @@ export default class App extends Component {
               <option value="2">Medium</option>
               <option value="3">High</option>
             </select>
-            <button onClick={() => this.handleClick()}>Save</button>
+            <button className="create-todo" onClick={() => this.handleClick()}>
+              Save
+            </button>
           </div>
 
           <div className="container col-8" id="todo-list">

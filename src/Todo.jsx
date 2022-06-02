@@ -10,7 +10,9 @@ export default (props) => (
         aria-label="..."
         onChange={(e) => props.handleCheck(e, props.i)}
       />
-      <span>{props.Todo.newTodo}</span>
+      <span className={props.Todo.strikeThrough ? "line-through" : "none"}>
+        {props.Todo.newTodo}
+      </span>
       <a
         onClick={() => {
           props.viewTodo(props.i);

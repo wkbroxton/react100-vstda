@@ -10,7 +10,7 @@ export default (props) => (
           value=""
           aria-label="..."
         />
-        <input>{props.Todo.newTodo}</input>
+        <textarea className="update-todo-text">{props.Todo.newTodo}</textarea>
       </div>
       <div id="td-right">
         <a className="edit-todo edit-button">
