@@ -15,7 +15,7 @@ export default (props) => (
       </span>
       <a
         onClick={() => {
-          props.viewTodo(props.i);
+          props.ViewTodo(props.i);
         }}
         className="edit-todo edit-button"
       >

@@ -150,6 +150,11 @@ export default class App extends Component {
                 <hr />
               </div>
             )}
+            {this.state.editEnabled ? (
+              <div className="div"></div>
+            ) : (
+              <div className="div"></div>
+            )}
           </div>
         </div>
       </div>
