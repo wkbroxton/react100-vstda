@@ -108,11 +108,10 @@ export default class App extends Component {
             {this.state.showTodos ? (
               <div>
                 <h4>ToDo Items</h4>
-                <h5 id="todos-phrase">Let's Get Some Things Done!</h5>
-                <h6>
-                  To prioritize task by importance, press sort buttom.
-                  <button>Sort</button>
-                </h6>
+                <h4 id="todos-phrase">Let's Get Some Things Done!</h4>
+                <h4>
+                  To prioritize task by importance, press <button>Sort</button>.
+                </h4>
                 <hr />
                 <ul className="list-group">
                   {this.state.allTodos.map((todo) => (
