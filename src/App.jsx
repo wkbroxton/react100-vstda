@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Todo from "./Todo";
+import ViewTodo from "./ViewTodo";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class App extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
   }
 
   onChange(e) {
@@ -23,6 +25,18 @@ export default class App extends Component {
     todoClone[e.target.name] = e.target.value;
     console.log(todoClone);
     this.setState({ todo: todoClone });
+  }
+
+  removeTodo(name, i) {
+    let todos = this.state.todos.slice();
+    todos.splice(i, 1);
+    this.setState({
+      todos,
+    });
+  }
+
+  updateValue(e) {
+    this.setState({ todo: e.target.value });
   }
 
   handleClick() {
@@ -94,24 +108,16 @@ export default class App extends Component {
             {this.state.showTodos ? (
               <div>
                 <h4>ToDo Items</h4>
+                <h5 id="todos-phrase">Let's Get Some Things Done!</h5>
+                <h6>
+                  To prioritize task by importance, press sort buttom.
+                  <button>Sort</button>
+                </h6>
                 <hr />
-                <ul className="list-group ">
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action view"
-                  >
-                    <li>
-                      {this.state.allTodos.map((todo) => (
-                        <Todo
-                          className="form-check-input me-1"
-                          type="checkbox"
-                          value=""
-                          aria-label="..."
-                          description={todo.newTodo}
-                        />
-                      ))}
-                    </li>
-                  </a>
+                <ul className="list-group">
+                  {this.state.allTodos.map((todo) => (
+                    <Todo Todo={todo} />
+                  ))}
                 </ul>
               </div>
             ) : (
@@ -121,32 +127,6 @@ export default class App extends Component {
                 <h5>Get started now by adding a new todo on the left.</h5>
                 <hr />
               </div>
-            )}
-            {this.state.editEnabled ? (
-              <div>
-                <h4>ToDo Items</h4>
-                <hr />
-                <ul className="list-group ">
-                  <a
-                    href="#"
-                    className="list-group-item list-group-item-action view"
-                  >
-                    <li>
-                      {this.state.allTodos.map((todo) => (
-                        <Todo
-                          className="form-check-input me-1"
-                          type="checkbox"
-                          value=""
-                          aria-label="..."
-                          description={todo.newTodo}
-                        />
-                      ))}
-                    </li>
-                  </a>
-                </ul>
-              </div>
-            ) : (
-              <div id="welcome-phrase-div"></div>
             )}
           </div>
         </div>

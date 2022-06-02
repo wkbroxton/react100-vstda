@@ -9,7 +9,7 @@ export default (props) => (
         value=""
         aria-label="..."
       />
-      <span>{props.Todo.newTodo}</span>
+      <input>{props.Todo.newTodo}</input>
       <a className="edit-todo edit-button">
         <img src="https://i.imgur.com/8Ox11Wz.png" />
       </a>
