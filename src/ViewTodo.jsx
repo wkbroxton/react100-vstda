@@ -2,8 +2,15 @@ import React from "react";
 
 export default (props) => (
   <li className={`list-group-item ${props.Todo.color}`}>
+    {this.state.editEnabled ? (
+              <div className="div">
+
+
+              </div>
+            ) : (
+              <div className="div">
     <div className="spots well">
-      <div id="td-left">
+      <div className="td-left col-8">
         <input
           className="form-check-input me-1"
           type="checkbox"
@@ -12,7 +19,7 @@ export default (props) => (
         />
         <textarea className="update-todo-text">{props.Todo.newTodo}</textarea>
       </div>
-      <div id="td-right">
+      <div className="td-right col-4">
         <a className="edit-todo edit-button">
           <img src="https://i.imgur.com/8Ox11Wz.png" />
         </a>
@@ -21,5 +28,9 @@ export default (props) => (
         </a>
       </div>
     </div>
+
+
+              </div>
+            )}
   </li>
 );

@@ -21,6 +21,8 @@ export default class App extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
+    this.viewTodo = this.viewTodo.bind(this);
+    this.saveChange = this.saveChange.bind(this);
   }
 
   onChange(e) {
@@ -28,6 +30,12 @@ export default class App extends Component {
     todoClone[e.target.name] = e.target.value;
     console.log(todoClone);
     this.setState({ todo: todoClone });
+  }
+
+  saveChange(e, i) {
+    let allTodosClone = [...this.state.allTodos];
+    allTodosClone[i][e.target.name] = e.target.value;
+    this.setState({ allTdos: allTodosClone });
   }
 
   handleCheck(e, i) {
@@ -48,8 +56,12 @@ export default class App extends Component {
     });
   }
 
-  updateValue(e) {
-    this.setState({ todo: e.target.value });
+  viewTodo(i) {
+    let allTodosClone = [...this.state.allTodos];
+    allTodosClone[i].editEnabled = !allTodosClone[i].editEnabled;
+    this.setState({
+      allTodos: allTodosClone,
+    });
   }
 
   handleClick() {
@@ -138,6 +150,8 @@ export default class App extends Component {
                       i={i}
                       key={i}
                       handleCheck={this.handleCheck}
+                      viewTodo={this.viewTodo}
+                      saveChange={this.saveChange}
                     />
                   ))}
                 </ul>
