@@ -4,17 +4,15 @@ export default (props) => (
   <div>
   {props.Todo.editEnabled ? (
     <div className="row">
-    <div className="container col-4" id="addToDo">
-      <h4 id="update">Let's Modify our Task...</h4>
+    <div className="container col-12" id="editToDo">
+      <h5 id="update">Let's Modify our Task...</h5>
       <textarea
-        cols="30"
-        rows="10"
         name="newTodo"
         className="update-todo-text"
         value={props.Todo.newTodo}
         onChange={(e) => props.saveChange(e, props.i)}
       ></textarea>
-      <h5>How much of a priority is this?</h5>
+      <h6>How much of a priority is this?</h6>
       <select
         className="update-todo-priority"
         name="priority"
@@ -28,7 +26,7 @@ export default (props) => (
         <option value="2">Medium</option>
         <option value="3">High</option>
       </select>
-      <button className="update-todo" onClick={() => props.viewTodo()}>
+      <button className="update-todo" onClick={() => props.viewTodo(props.i)}>
         Save
       </button>
     </div>

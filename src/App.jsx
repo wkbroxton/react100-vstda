@@ -35,7 +35,7 @@ export default class App extends Component {
   saveChange(e, i) {
     let allTodosClone = [...this.state.allTodos];
     allTodosClone[i][e.target.name] = e.target.value;
-    this.setState({ allTdos: allTodosClone });
+    this.setState({ allTodos: allTodosClone });
   }
 
   handleCheck(e, i) {
@@ -59,6 +59,12 @@ export default class App extends Component {
   viewTodo(i) {
     let allTodosClone = [...this.state.allTodos];
     allTodosClone[i].editEnabled = !allTodosClone[i].editEnabled;
+    // if(allTodosClone[i].editEnabled == true){
+    //   allTodosClone[i].editEnabled = false}
+    //   else {
+    //     allTodosClone[i].editEnabled = true
+    //   };
+    // console.log(allTodosClone[i])
     this.setState({
       allTodos: allTodosClone,
     });
