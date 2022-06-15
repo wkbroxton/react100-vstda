@@ -1,7 +1,6 @@
 import { all } from "bluebird";
 import React, { Component } from "react";
 import Todo from "./Todo";
-import ViewTodo from "./ViewTodo";
 
 export default class App extends Component {
   constructor(props) {
@@ -66,12 +65,6 @@ export default class App extends Component {
   viewTodo(i) {
     let allTodosClone = [...this.state.allTodos];
     allTodosClone[i].editEnabled = !allTodosClone[i].editEnabled;
-    // if(allTodosClone[i].editEnabled == true){
-    //   allTodosClone[i].editEnabled = false}
-    //   else {
-    //     allTodosClone[i].editEnabled = true
-    //   };
-    // console.log(allTodosClone[i])
     this.setState({
       allTodos: allTodosClone,
     });
@@ -150,10 +143,10 @@ export default class App extends Component {
               <div>
                 <h4>ToDo Items</h4>
                 <h4 id="todos-phrase">Let's Get Some Things Done!</h4>
-                <h4>
+                {/* <h4>
                   To prioritize task by importance, press{" "}
                   <button id="sort">Sort</button>.
-                </h4>
+                </h4> */}
                 <hr />
                 <ul className="list-group">
                   {this.state.allTodos.map((todo, i) => (
