@@ -35,6 +35,13 @@ export default class App extends Component {
   saveChange(e, i) {
     let allTodosClone = [...this.state.allTodos];
     allTodosClone[i][e.target.name] = e.target.value;
+    let priority = allTodosClone[i]["priority"];   
+    allTodosClone[i]["color"] =
+      priority == "1"
+        ? "list-group-item-success"
+        : priority == "2"
+        ? "list-group-item-warning"
+        : "list-group-item-danger";
     this.setState({ allTodos: allTodosClone });
   }
 
